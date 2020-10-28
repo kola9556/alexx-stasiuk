@@ -1,22 +1,31 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import styled from 'styled-components';
+import hero from '../assets/images/hero.jpg';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const TopWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-image: url(${({ image }) => image});
+  background-position: 50% 50%;
+  background-size: 100%;
+  background-attachment: fixed;
+`;
+
+const Triangle = styled.div`
+  position: absolute;
+  bottom:0;
+  right:0;
+  width: 0;
+	height: 0;
+  border-left: 75vw solid transparent;
+	border-bottom: 95vh solid ${({ theme }) => theme.pinkBackground};
+}
+`;
 
 const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+  <TopWrapper image={hero}>
+    <Triangle />
+  </TopWrapper>
+);
 
-export default IndexPage
+export default IndexPage;
