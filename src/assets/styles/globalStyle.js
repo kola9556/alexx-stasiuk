@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
     body {
         background-color: rgba(240, 232, 232, 1);
         margin: 0;
-       
         font-family: 'Ropa Sans';
     }
 
