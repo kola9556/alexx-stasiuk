@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const TriangleBackground = styled.div`
   position: absolute;
-  z-index: 100;
+  display: flex;
+  z-index: -10;
   bottom: 0;
   right: 0;
   width: 0;

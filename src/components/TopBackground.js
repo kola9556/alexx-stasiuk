@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import BackgroundImage from 'gatsby-background-image';
 
 const BackgroundSection = ({ fluidTransfer, className, children }) => {
-  console.log(fluidTransfer);
   return (
     <BackgroundImage
       fluid={fluidTransfer}
@@ -17,6 +16,10 @@ const BackgroundSection = ({ fluidTransfer, className, children }) => {
 };
 
 const TopBackground = styled(BackgroundSection)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
   position: absolute;

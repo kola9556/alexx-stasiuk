@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Alex Stasiuk`,
+    description: `This is Alex Satsiuk frontend developer portfolio website.`,
+    author: `Alex Stasiuk`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,14 +30,9 @@ module.exports = {
     `gatsby-plugin-layout`,
 
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: 'Ropa Sans',
-            variants: [`400`, `400i`],
-          },
-        ],
+        fonts: ['Ropa Sans:400,400i'],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
