@@ -56,10 +56,10 @@ const StyledLogo = styled(Link)`
   }
 `;
 
-const Logo = ({ path }) => {
+const Logo = ({ whereToGo }) => {
   return (
     <>
-      <StyledLogo to={path}>
+      <StyledLogo to={whereToGo}>
         <svg
           class="mySvg"
           width="60"
