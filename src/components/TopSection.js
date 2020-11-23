@@ -36,8 +36,6 @@ const StyledSecHeading = styled(SecHeading)`
   border-radius: 3rem;
 `;
 
-const textContent = {};
-
 const TopSection = ({ transferFluid, portraitFluid, text }) => {
   return (
     <>

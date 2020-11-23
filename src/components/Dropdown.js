@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../components/Button';
+import Button from './MainButton';
 
 const DropdownWrapper = styled.div`
   width: 60vw;
@@ -24,10 +24,10 @@ const Dropdown = ({ isVisible }) => {
   return (
     <>
       <DropdownWrapper isVisible={isVisible}>
-        <Button to="/about">about me</Button>
-        <Button to="/projects">projects</Button>
-        <Button to="/stack">stack</Button>
-        <Button to="/contact">contact</Button>
+        <Button path="/about">about me</Button>
+        <Button path="/projects">projects</Button>
+        <Button path="/stack">stack</Button>
+        <Button path="/contact">contact</Button>
       </DropdownWrapper>
     </>
   );
