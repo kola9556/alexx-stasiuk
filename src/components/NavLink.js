@@ -7,6 +7,10 @@ const NavLink = styled(Link)`
   color: ${(theme) => theme.navyPurple};
   letter-spacing: 0.3rem;
 
+  @media (min-width: 700px) {
+    font-size: 2.4rem;
+  }
+
   :visited {
     color: ${(theme) => theme.navyPurple};
   }

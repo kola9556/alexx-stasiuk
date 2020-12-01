@@ -12,12 +12,14 @@ const NavigationbarWrapper = styled.div`
     background: transparent;
     position: absolute;
     top: 1rem;
-    width: 60%;
-    left: 25%;
+    width: 60rem;
+    transform: rotate(-90deg);
+    right: calc(-32rem + 40%);
+    bottom: 0rem;
   }
 `;
 
-const Navigation = () => {
+const NavigationHome = () => {
   return (
     <NavigationbarWrapper>
       <NavLink to="/about" activeClassName="active">
@@ -36,4 +38,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NavigationHome;

@@ -5,7 +5,7 @@ const FixedBackgroundSection = ({ fluidTransfer, className, children }) => {
   return (
     <BackgroundImage
       fluid={fluidTransfer}
-      backgroundColor={({ theme }) => theme.pinkBackground}
+      backgroundColor="rgba(240, 232, 232, 1)"
       Tag="section"
       className={className}
     >

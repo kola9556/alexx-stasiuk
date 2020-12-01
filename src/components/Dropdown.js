@@ -24,10 +24,10 @@ const Dropdown = ({ isVisible }) => {
   return (
     <>
       <DropdownWrapper isVisible={isVisible}>
-        <Button path="/about">about me</Button>
-        <Button path="/projects">projects</Button>
-        <Button path="/stack">stack</Button>
-        <Button path="/contact">contact</Button>
+        <Button whereToGo="/about">about me</Button>
+        <Button whereToGo="/projects">projects</Button>
+        <Button whereToGo="/stack">stack</Button>
+        <Button whereToGo="/contact">contact</Button>
       </DropdownWrapper>
     </>
   );

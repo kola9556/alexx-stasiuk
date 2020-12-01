@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Hamburger from './Hamburger';
 import Logo from './Logo';
-import { SecHeading, Paragraph } from './StyledTexts';
+import { SecHeading } from './StyledTexts';
 import Navigation from './Navigation';
 import LeftWrapper from './LeftWrapper';
 import RightWrapper from './RightWrapper';
@@ -27,6 +27,10 @@ const PortraitImage = styled(Image)`
   height: auto;
   filter: grayscale(30%);
   border-radius: 2rem;
+
+  @media (min-width: 700px) {
+    width: 47%;
+  }
 `;
 const StyledSecHeading = styled(SecHeading)`
   margin-top: 3rem;
@@ -34,6 +38,17 @@ const StyledSecHeading = styled(SecHeading)`
   background: ${({ theme }) => theme.smokePink};
   width: 75%;
   border-radius: 3rem;
+
+  @media (min-width: 700px) {
+    width: 50%;
+    background: transparent;
+
+    ${({ mobile }) =>
+      mobile &&
+      css`
+        display: none;
+      `}
+  }
 `;
 
 const TopSection = ({ transferFluid, portraitFluid, text }) => {
@@ -45,11 +60,12 @@ const TopSection = ({ transferFluid, portraitFluid, text }) => {
           <LogoWrapper>
             <Logo whereToGo="/" />
           </LogoWrapper>
-          <PortraitImage fluid={portraitFluid} />
-          <StyledSecHeading>{text}</StyledSecHeading>
+          <PortraitImage alt="Portfolio image of Aleksandra Stasiuk" fluid={portraitFluid} />
+          <StyledSecHeading mobile>{text}</StyledSecHeading>
         </LeftWrapper>
         <RightWrapper>
           <Navigation />
+          <StyledSecHeading>{text}</StyledSecHeading>
         </RightWrapper>
       </MainWrapper>
     </>

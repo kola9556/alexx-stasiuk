@@ -1,6 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
+
+const ButtonFrame = styled.div`
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  width: 12rem;
+  height: 3.8rem;
+  border: 0.2rem solid ${({ theme }) => theme.navyText};
+  border-radius: 0.7rem;
+
+  @media (min-width: 700px) {
+    width: 20rem;
+    height: 5rem;
+  }
+`;
 
 const Button = styled(Link)`
   margin: 0;
@@ -22,6 +37,12 @@ const Button = styled(Link)`
   transform: translate(-10px, -10px);
   transition: transform 0.5s;
 
+  ${({ aboutpagecontact }) =>
+    aboutpagecontact &&
+    css`
+      transform: translate(10px, 10px);
+    `}
+
   :hover {
     transform: translate(0, 0);
   }
@@ -31,22 +52,19 @@ const Button = styled(Link)`
     color: ${({ theme }) => theme.navyText};
     border: 3px solid ${({ theme }) => theme.navyText};
   }
+
+  @media (min-width: 700px) {
+    font-size: 3rem;
+  }
 `;
 
-const ButtonFrame = styled.div`
-  margin: 0;
-  padding: 0;
-  width: 12rem;
-  height: 3.8rem;
-  border: 0.2rem solid ${({ theme }) => theme.navyText};
-  border-radius: 0.7rem;
-`;
-
-const MainButton = ({ children, path }) => {
+const MainButton = ({ children, whereToGo, aboutPageContact }) => {
   return (
     <>
       <ButtonFrame>
-        <Button to={path}>{children}</Button>
+        <Button aboutpagecontact={aboutPageContact} to={whereToGo}>
+          {children}
+        </Button>
       </ButtonFrame>
     </>
   );

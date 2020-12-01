@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import Hamburger from './Hamburger';
 import Logo from './Logo';
 import { Heading, UpperSecondHeading } from './StyledTexts';
-import Navigation from './Navigation';
+import NavigationHome from './NavigationHome';
 import LeftWrapper from './LeftWrapper';
 import RightWrapper from './RightWrapper';
 
@@ -51,8 +51,8 @@ const HomeTop = ({ transferFluid }) => {
           <Heading>{window.screen.width < 700 ? textContent.phone : textContent.desktop}</Heading>
           <UpperSecondHeading>{textContent.secondHeading}</UpperSecondHeading>
         </LeftWrapper>
-        <RightWrapper>
-          <Navigation />
+        <RightWrapper home>
+          <NavigationHome />
           <LogoWrapper>
             <Logo whereToGo="/" />
           </LogoWrapper>
