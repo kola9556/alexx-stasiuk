@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Alex Stasiuk`,
@@ -18,12 +20,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Alex Stasiuk portfolio`,
+        short_name: `AlexxStasiuk`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#f0e8e8`,
+        theme_color: `#f0e8e8`,
         display: `minimal-ui`,
+        icon: `src/assets/images/logo.png`,
       },
     },
     `gatsby-plugin-styled-components`,
@@ -33,6 +36,14 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: ['Ropa Sans:400,400i'],
+      },
+    },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        // You can find your read-only API token under the Settings > API tokens
+        // section of your administrative area:
+        apiToken: process.env.API_DATO_CMS,
       },
     },
 

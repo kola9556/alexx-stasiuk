@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { media } from '../utils';
 import Hamburger from './Hamburger';
 import Logo from './Logo';
 import { Heading, UpperSecondHeading } from './StyledTexts';
@@ -22,9 +23,7 @@ const LogoWrapper = styled.div`
   ${({ desktop }) =>
     desktop &&
     css`
-      @media (min-width: 700px) {
-        display: none;
-      }
+      ${media.tablet` display: none;`}
     `}
 `;
 
@@ -48,7 +47,9 @@ const HomeTop = ({ transferFluid }) => {
           <LogoWrapper desktop>
             <Logo whereToGo="/" />
           </LogoWrapper>
-          <Heading>{window.screen.width < 700 ? textContent.phone : textContent.desktop}</Heading>
+          <Heading index>
+            {window.screen.width < 700 ? textContent.phone : textContent.desktop}
+          </Heading>
           <UpperSecondHeading>{textContent.secondHeading}</UpperSecondHeading>
         </LeftWrapper>
         <RightWrapper home>

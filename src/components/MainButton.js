@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
+import { media } from '../utils';
 
 const ButtonFrame = styled.div`
   display: inline-block;
@@ -11,10 +12,8 @@ const ButtonFrame = styled.div`
   border: 0.2rem solid ${({ theme }) => theme.navyText};
   border-radius: 0.7rem;
 
-  @media (min-width: 700px) {
-    width: 20rem;
-    height: 5rem;
-  }
+  ${media.tablet`width: 20rem;
+    height: 5rem;`}
 `;
 
 const Button = styled(Link)`
@@ -53,9 +52,7 @@ const Button = styled(Link)`
     border: 3px solid ${({ theme }) => theme.navyText};
   }
 
-  @media (min-width: 700px) {
-    font-size: 3rem;
-  }
+  ${media.tablet` font-size: 3rem;`}
 `;
 
 const MainButton = ({ children, whereToGo, aboutPageContact }) => {

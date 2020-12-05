@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { media } from '../utils';
 import { graphql } from 'gatsby';
 import { Paragraph, SecHeading } from '../components/StyledTexts';
 import TopSection from '../components/TopSection';
@@ -8,13 +9,23 @@ import Hobbies from '../components/Hobbies';
 import Footer from '../components/Footer';
 import ClickArrow from '../components/ClickArrow';
 import click from '../assets/images/click.svg';
+import Navigation from '../components/Navigation';
 
 const StyledParagraph = styled(Paragraph)`
   margin: 8rem 4rem;
 
-  @media (min-width: 700px) {
-    margin: 18rem 18% 12rem;
+  ::first-letter {
+    font-size: 3.5rem;
+    font-weight: 600;
   }
+
+  ${media.tablet` margin: 18rem 18% 12rem;
+
+    ::first-letter {
+      font-size: 5.5rem;
+      font-weight: 600;
+    }
+`}
 `;
 
 const StyledSecHeading = styled(SecHeading)`
@@ -28,21 +39,19 @@ const ButtonsWrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 5rem;
 
-  @media (min-width: 700px) {
-    width: 40vw;
+  ${media.tablet` width: 40vw;
     margin: 5rem 0 15rem;
-  }
+`}
 `;
 
 const ContactMessage = styled(SecHeading)`
   margin: 7rem 2rem;
   font-size: 3.2rem;
 
-  @media (min-width: 700px) {
-    margin: 12rem 0 20rem;
+  ${media.tablet` margin: 12rem 0 20rem;
     font-size: 4.2rem;
     width: 40vw;
-  }
+`}
 `;
 
 const textContent = { heading: <>Hi, I'm Aleksandra Stasiuk!</> };
@@ -64,6 +73,7 @@ const AboutPage = ({ data }) => {
 
   return (
     <>
+      <Navigation />
       <TopSection
         transferFluid={about[0].node.childImageSharp.fluid}
         portraitFluid={alex[0].node.childImageSharp.fluid}

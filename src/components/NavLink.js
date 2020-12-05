@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { media } from '../utils';
 
 const NavLink = styled(Link)`
   font-size: 2.8rem;
@@ -7,9 +8,7 @@ const NavLink = styled(Link)`
   color: ${(theme) => theme.navyPurple};
   letter-spacing: 0.3rem;
 
-  @media (min-width: 700px) {
-    font-size: 2.4rem;
-  }
+  ${media.tablet`font-size: 2.4rem;`}
 
   :visited {
     color: ${(theme) => theme.navyPurple};

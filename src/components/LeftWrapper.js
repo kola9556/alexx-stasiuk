@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import FixedBackgroundSection from './FixedBackground';
+import { media } from '../utils';
 
 const LeftWrapper = styled(FixedBackgroundSection)`
   display: flex;
@@ -12,9 +13,7 @@ const LeftWrapper = styled(FixedBackgroundSection)`
   background-size: cover;
   background-attachment: fixed;
 
-  @media (min-width: 700px) {
-    width: 60%;
-  }
+  ${media.tablet`width: 60%;`}
 `;
 
 export default LeftWrapper;

@@ -1,38 +1,77 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { media } from '../utils';
 import styled from 'styled-components';
 import NavLink from './NavLink';
+import Logo from './Logo';
 
-const NavigationbarWrapper = styled.div`
+const NavigationWrapper = styled.div`
   display: none;
-
-  @media (min-width: 700px) {
+  ${media.tablet`
+    width: 100vw;
+    top: 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
-    background: transparent;
-    position: absolute;
-    top: 1rem;
-    width: 60%;
-    left: 25%;
-  }
+    position: fixed;
+    transition: background-color 0.6s ease-out;
+    z-index: 1000;
+    `}
+`;
+
+const LogoWrapper = styled.div`
+  margin: 0.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
+
+const LinksWrapper = styled.div`
+  display: flex;
+  flex-grow: 0.4;
+  justify-content: space-between;
 `;
 
 const Navigation = () => {
+  const [navigationBackground, setNavigationBackground] = useState('transparent');
+  const navigationRef = useRef(null);
+
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+
+    navigationRef.current.style.height = '70px';
+    navigationRef.current.style.background = navigationBackground;
+
+    return () => {
+      window.removeEventListener('scroll', updateScroll);
+    };
+  });
+
+  const updateScroll = () => {
+    window.scrollY > window.innerHeight
+      ? setNavigationBackground('rgba(255,255,255,0.8)')
+      : setNavigationBackground('transparent');
+  };
+
   return (
-    <NavigationbarWrapper>
-      <NavLink to="/about" activeClassName="active">
-        about me
-      </NavLink>
-      <NavLink to="/projects" activeClassName="active">
-        projects
-      </NavLink>
-      <NavLink to="/stack" activeClassName="active">
-        stack
-      </NavLink>
-      <NavLink to="/contact" activeClassName="active">
-        contact
-      </NavLink>
-    </NavigationbarWrapper>
+    <NavigationWrapper ref={navigationRef}>
+      <LogoWrapper className="logo">
+        <Logo whereToGo="/" />
+      </LogoWrapper>
+      <LinksWrapper>
+        <NavLink to="/about" activeClassName="active">
+          about me
+        </NavLink>
+        <NavLink to="/projects" activeClassName="active">
+          projects
+        </NavLink>
+        <NavLink to="/stack" activeClassName="active">
+          stack
+        </NavLink>
+        <NavLink to="/contact" activeClassName="active">
+          contact
+        </NavLink>
+      </LinksWrapper>
+    </NavigationWrapper>
   );
 };
 

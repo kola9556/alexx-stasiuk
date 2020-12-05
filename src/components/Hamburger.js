@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import { media } from '../utils';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
 
 const NavWrapper = styled.div`
-  @media (min-width: 700px) {
-    display: none;
-  }
+  ${media.tablet`display: none;`}
 `;
 
 const HamburgerWrapper = styled.button`

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavLink from './NavLink';
+import { media } from '../utils';
 
 const NavigationbarWrapper = styled.div`
   display: none;
 
-  @media (min-width: 700px) {
-    display: flex;
+  ${media.tablet` display: flex;
     align-items: center;
     justify-content: space-around;
     background: transparent;
@@ -15,8 +15,7 @@ const NavigationbarWrapper = styled.div`
     width: 60rem;
     transform: rotate(-90deg);
     right: calc(-32rem + 40%);
-    bottom: 0rem;
-  }
+    bottom: 0rem;`}
 `;
 
 const NavigationHome = () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import { media } from '../utils';
 
 const colors = {
   basic: 'rgba(244, 235, 190, 1)',
@@ -49,10 +50,8 @@ const StyledLogo = styled(Link)`
   }
 
   svg {
-    @media (min-width: 700px) {
-      height: 7rem;
-      width: 7rem;
-    }
+    ${media.tablet`height: 7rem;
+      width: 5.5rem;`}
   }
 `;
 

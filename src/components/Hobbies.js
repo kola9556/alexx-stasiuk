@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import IconWrapper from './IconWrapper';
+import { media } from '../utils';
+import IconWrapper from './IconWrapper.js';
 import food from '../assets/images/food.jpg';
 import horse from '../assets/images/horse.jpg';
 import travel from '../assets/images/travel.jpg';
@@ -14,11 +15,9 @@ const IconsWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 700px) {
-    width: 40vw;
+  ${media.tablet` width: 40vw;
     bottom: 0;
-    margin-bottom: 3rem;
-  }
+    margin-bottom: 3rem;`}
 `;
 
 const Photo = styled.img`
@@ -29,10 +28,9 @@ const Photo = styled.img`
   width: 75vw;
   padding: 1.2rem;
 
-  @media (min-width: 700px) {
+  ${media.tablet` 
     width: 40vw;
-    margin-top: 0;
-  }
+    margin-top: 0;`}
 `;
 
 const Hobbies = () => {
@@ -218,7 +216,6 @@ const Hobbies = () => {
             isEnter.food ? (
               <svg
                 className="foodIcon"
-                ref={foodIcon}
                 width="187"
                 height="187"
                 viewBox="0 0 187 187"

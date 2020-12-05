@@ -6,14 +6,12 @@ const IconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
   svg {
     width: 90%;
     height: 90%;
     transition: transform 1s;
     transition-timing-function: ease-in-out;
   }
-
   :hover {
     svg {
       width: 100%;

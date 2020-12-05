@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const MainLayout = ({ children }) => (
+const MainLayout = ({ children, pageContext }) => (
   <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
