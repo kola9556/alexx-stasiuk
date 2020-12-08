@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { media } from '../utils';
+import styled, { css } from "styled-components";
+import { media } from "../utils";
 
 export const Heading = styled.h1`
   margin: 0;
@@ -19,7 +19,7 @@ export const Heading = styled.h1`
 
 export const SecHeading = styled.h1`
   margin: 0;
-  font-size: 3rem;
+  font-size: 2.6rem;
   text-align: center;
   color: ${({ theme }) => theme.navyText};
   letter-spacing: 0.4rem;
@@ -34,7 +34,8 @@ export const UpperSecondHeading = styled.h2`
   color: ${({ theme }) => theme.navyText};
   letter-spacing: 0.3rem;
 
-  ${media.tablet` font-size: 3.2rem;
+  ${media.tablet`
+    font-size: 3.2rem;
     margin: 0;`}
 `;
 

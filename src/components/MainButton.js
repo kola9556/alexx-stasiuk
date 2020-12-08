@@ -1,7 +1,7 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
-import { media } from '../utils';
+import React from "react";
+import styled, { css } from "styled-components";
+import { Link } from "gatsby";
+import { media } from "../utils";
 
 const ButtonFrame = styled.div`
   display: inline-block;
@@ -36,8 +36,8 @@ const Button = styled(Link)`
   transform: translate(-10px, -10px);
   transition: transform 0.5s;
 
-  ${({ aboutpagecontact }) =>
-    aboutpagecontact &&
+  ${({ down }) =>
+    down &&
     css`
       transform: translate(10px, 10px);
     `}
@@ -55,11 +55,11 @@ const Button = styled(Link)`
   ${media.tablet` font-size: 3rem;`}
 `;
 
-const MainButton = ({ children, whereToGo, aboutPageContact }) => {
+const MainButton = ({ children, whereToGo, down }) => {
   return (
     <>
       <ButtonFrame>
-        <Button aboutpagecontact={aboutPageContact} to={whereToGo}>
+        <Button down={down} to={whereToGo}>
           {children}
         </Button>
       </ButtonFrame>

@@ -1,7 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { SecHeading, Paragraph } from './StyledTexts';
-import StackButton from './StackButton';
+import React from "react";
+import styled, { css } from "styled-components";
+import { media } from "../utils";
+import { SecHeading, Paragraph } from "./StyledTexts";
+import StackButton from "./StackButton";
 
 const ProjectWrapper = styled.div`
   width: 75vw;
@@ -10,6 +11,11 @@ const ProjectWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  ${media.tablet`
+      margin: 28rem 0 0;
+    
+  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -17,6 +23,15 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  ${media.tablet`
+    flex-direction: row;
+    justify-content: space-between;
+
+    svg{
+      height: 60vh;
+    }
+  `}
 `;
 
 const InfoWrapper = styled.div`
@@ -26,6 +41,14 @@ const InfoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   align-content: center;
+
+  ${media.tablet`
+    width: 50%;
+  `}
+`;
+
+const ProjectTitile = styled(SecHeading)`
+  ${media.tablet`margin-bottom: 3rem;`}
 `;
 
 const StackIconsWrapper = styled.div`
@@ -39,10 +62,19 @@ const StackIconsWrapper = styled.div`
 const Icon = styled.img`
   width: 10vw;
 
+  ${media.tablet`
+    width: 5vw;
+    margin: 0 1rem;
+  `}
+
   ${({ dato }) =>
     dato &&
     css`
       width: 20vw;
+
+      ${media.tablet`
+        width: 10vw;
+      `}
     `}
 `;
 
@@ -52,6 +84,10 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+`;
+
+const CenteredParagraph = styled(Paragraph)`
+  text-align: center;
 `;
 
 const Project = ({
@@ -64,9 +100,10 @@ const Project = ({
   keyItem,
   projectImageAlt,
 }) => {
+  console.log(typeof window.innerWidth);
   return (
     <ProjectWrapper>
-      <SecHeading>{title}</SecHeading>
+      <ProjectTitile>{title}</ProjectTitile>
       <ContentWrapper>
         <svg
           width="100%"
@@ -80,7 +117,13 @@ const Project = ({
             d="M594.788 43.0482H29.2203C13.0754 43.0482 0 55.7781 0 71.5124V438.647C0 454.38 13.0754 467.117 29.2203 467.117H241.743V498.878H163.468L125.996 564.952H498.007L460.539 498.878H382.257V467.117H594.788C610.903 467.117 624 454.378 624 438.647V71.5124C624 55.7781 610.903 43.0482 594.788 43.0482ZM565.547 410.185H58.4319V99.9732H565.547V410.185Z"
             fill="#B77E8C"
           />
-          <rect x="59" y="96" width="505" height="317" fill={`url(#${keyItem}patt)`} />
+          <rect
+            x="59"
+            y="96"
+            width="505"
+            height="317"
+            fill={`url(#${keyItem}patt)`}
+          />
           <defs>
             <pattern
               id={`${keyItem}patt`}
@@ -93,20 +136,42 @@ const Project = ({
                 transform="translate(0 -0.0496196) scale(0.000875657 0.00139497)"
               />
             </pattern>
-            <image id={`${keyItem}image`} href={projectImage} alt={projectImageAlt} />
+            <image
+              id={`${keyItem}image`}
+              href={projectImage}
+              alt={projectImageAlt}
+            />
           </defs>
         </svg>
         <InfoWrapper>
-          <StackIconsWrapper>
-            {iconsArray.map((icon) =>
-              icon.iconData.filename === 'datocms.svg' ? (
-                <Icon key={icon.id} src={icon.iconData.url} dato />
-              ) : (
-                <Icon key={icon.id} src={icon.iconData.url} />
-              ),
-            )}
-          </StackIconsWrapper>
-          <Paragraph>{description}</Paragraph>
+          {window.innerWidth > 700 ? (
+            <>
+              <StackIconsWrapper>
+                {iconsArray.map((icon) =>
+                  icon.iconData.filename === "datocms.svg" ? (
+                    <Icon key={icon.id} src={icon.iconData.url} dato />
+                  ) : (
+                    <Icon key={icon.id} src={icon.iconData.url} />
+                  )
+                )}
+              </StackIconsWrapper>
+              <Paragraph>{description}</Paragraph>
+            </>
+          ) : (
+            <>
+              <CenteredParagraph>{description}</CenteredParagraph>
+              <StackIconsWrapper>
+                {iconsArray.map((icon) =>
+                  icon.iconData.filename === "datocms.svg" ? (
+                    <Icon key={icon.id} src={icon.iconData.url} dato />
+                  ) : (
+                    <Icon key={icon.id} src={icon.iconData.url} />
+                  )
+                )}
+              </StackIconsWrapper>
+            </>
+          )}
+
           <ButtonsWrapper>
             <StackButton href={githubLink} target="_blank">
               github

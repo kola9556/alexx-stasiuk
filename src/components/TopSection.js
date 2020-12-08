@@ -1,11 +1,12 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { media } from '../utils';
-import Hamburger from './Hamburger';
-import { Heading } from './StyledTexts';
-import LeftWrapper from './LeftWrapper';
-import RightWrapper from './RightWrapper';
-import Image from 'gatsby-image';
+import React from "react";
+import styled, { css } from "styled-components";
+import { media } from "../utils";
+import Navigation from "../components/Navigation";
+import Hamburger from "./Hamburger";
+import { Heading } from "./StyledTexts";
+import LeftWrapper from "./LeftWrapper";
+import RightWrapper from "./RightWrapper";
+import Image from "gatsby-image";
 
 const MainWrapper = styled.div`
   width: 100%;
@@ -43,10 +44,14 @@ const TopSection = ({ transferFluid, portraitFluid, text }) => {
   return (
     <>
       <MainWrapper>
+        <Navigation />
         <LeftWrapper fluidTransfer={transferFluid}>
           <Hamburger />
           {portraitFluid ? (
-            <PortraitImage alt="Portfolio image of Aleksandra Stasiuk" fluid={portraitFluid} />
+            <PortraitImage
+              alt="Portfolio image of Aleksandra Stasiuk"
+              fluid={portraitFluid}
+            />
           ) : null}
           <StyledSecHeading mobile>{text}</StyledSecHeading>
         </LeftWrapper>

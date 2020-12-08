@@ -1,18 +1,31 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import TopSection from '../components/TopSection';
-import Project from '../components/Project';
-import Navigation from '../components/Navigation';
+import React from "react";
+import styled from "styled-components";
+import { graphql } from "gatsby";
+import { media } from "../utils";
+import TopSection from "../components/TopSection";
+import Project from "../components/Project";
+import { SecHeading } from "../components/StyledTexts";
+import MainButton from "../components/MainButton";
+import Footer from "../components/Footer";
 
-const textContent = { heading: 'Projects' };
+const textContent = { heading: "Projects" };
+
+const LetsCheck = styled(SecHeading)`
+  margin: 3rem;
+
+  ${media.tablet`
+    margin: 35rem 0;  
+  `}
+`;
 
 const ProjectsPage = ({ data }) => {
-  const projectImageTop = data.allFile.edges.filter((e) => e.node.name === 'projects');
+  const projectImageTop = data.allFile.edges.filter(
+    (e) => e.node.name === "projects"
+  );
   const projectsArray = data.allDatoCmsProject.nodes;
 
   return (
     <>
-      <Navigation />
       <TopSection
         transferFluid={projectImageTop[0].node.childImageSharp.fluid}
         text={textContent.heading}
@@ -30,6 +43,14 @@ const ProjectsPage = ({ data }) => {
           pageLink={project.pageLink}
         />
       ))}
+      <LetsCheck>
+        Let's check my tech <br />
+        <MainButton whereToGo="/stack" down="true">
+          stack
+        </MainButton>{" "}
+        !{" "}
+      </LetsCheck>
+      <Footer />
     </>
   );
 };
