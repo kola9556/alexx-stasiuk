@@ -29,11 +29,6 @@ const StyledParagraph = styled(Paragraph)`
 `}
 `;
 
-const StyledSecHeading = styled(SecHeading)`
-  margin: 6rem 6rem 4rem;
-  border-bottom: 1rem solid ${({ theme }) => theme.navyText};
-`;
-
 const ButtonsWrapper = styled.div`
   width: 80vw;
   display: flex;
@@ -101,12 +96,12 @@ const AboutPage = ({ data }) => {
         mi finibus vestibulum eu non ante. Nullam elementum orci sed feugiat
         hendrerit. Fusce maximus neque at tempus venenatis.
       </StyledParagraph>
-      <StyledSecHeading>Let's check!</StyledSecHeading>
+      <SecHeading underline>Let's check!</SecHeading>
       <ButtonsWrapper>
         <MainButton whereToGo="/projects">projects</MainButton>
         <MainButton whereToGo="/stack">stack</MainButton>
       </ButtonsWrapper>
-      <StyledSecHeading>My hobbies</StyledSecHeading>
+      <SecHeading underline>My hobbies</SecHeading>
       <ClickArrow className="click" src={click} />
       <Hobbies />
       <ContactMessage>

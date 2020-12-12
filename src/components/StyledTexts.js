@@ -25,6 +25,13 @@ export const SecHeading = styled.h1`
   letter-spacing: 0.4rem;
 
   ${media.tablet` font-size: 6.2rem;`}
+
+  ${({ underline }) =>
+    underline &&
+    css`
+      margin: 6rem 3rem 4rem;
+      text-decoration: underline;
+    `}
 `;
 
 export const UpperSecondHeading = styled.h2`

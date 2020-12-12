@@ -100,7 +100,6 @@ const Project = ({
   keyItem,
   projectImageAlt,
 }) => {
-  console.log(typeof window.innerWidth);
   return (
     <ProjectWrapper>
       <ProjectTitile>{title}</ProjectTitile>
