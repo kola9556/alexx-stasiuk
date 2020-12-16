@@ -1,17 +1,22 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { media } from "../utils";
-import Navigation from "../components/Navigation";
-import Hamburger from "./Hamburger";
 import { Heading } from "./StyledTexts";
-import LeftWrapper from "./LeftWrapper";
-import RightWrapper from "./RightWrapper";
+import FixedBackgroundLeft from "./FixedBackgrundLeft";
 import Image from "gatsby-image";
 
 const MainWrapper = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
+
+  ${({ contact }) =>
+    contact &&
+    css`
+      ${media.tablet`
+      height: 95vh;
+    `}
+    `}
 `;
 
 const PortraitImage = styled(Image)`
@@ -22,6 +27,18 @@ const PortraitImage = styled(Image)`
   border-radius: 2rem;
 
   ${media.tablet` width: 47%;`}
+`;
+
+const RightWrapper = styled.div`
+  display: none;
+
+  ${media.tablet`background: ${({ theme }) => theme.pinkBackground};
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;`}
 `;
 const StyledSecHeading = styled(Heading)`
   margin-top: 3rem;
@@ -40,13 +57,17 @@ const StyledSecHeading = styled(Heading)`
       `}`}
 `;
 
-const TopSection = ({ transferFluid, portraitFluid, text }) => {
+const TopSection = ({
+  transferFluid,
+  portraitFluid,
+  text,
+  children,
+  contact,
+}) => {
   return (
     <>
-      <MainWrapper>
-        <Navigation />
-        <LeftWrapper fluidTransfer={transferFluid}>
-          <Hamburger />
+      <MainWrapper contact={contact}>
+        <FixedBackgroundLeft fluidTransfer={transferFluid}>
           {portraitFluid ? (
             <PortraitImage
               alt="Portfolio image of Aleksandra Stasiuk"
@@ -54,9 +75,10 @@ const TopSection = ({ transferFluid, portraitFluid, text }) => {
             />
           ) : null}
           <StyledSecHeading mobile>{text}</StyledSecHeading>
-        </LeftWrapper>
+        </FixedBackgroundLeft>
         <RightWrapper>
           <StyledSecHeading>{text}</StyledSecHeading>
+          {children}
         </RightWrapper>
       </MainWrapper>
     </>

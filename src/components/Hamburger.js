@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { media } from '../utils';
-import styled from 'styled-components';
-import Dropdown from './Dropdown';
+import React, { useState } from "react";
+import { media } from "../utils";
+import styled from "styled-components";
+import Dropdown from "./Dropdown";
 
 const NavWrapper = styled.div`
+  z-index: 1000;
   ${media.tablet`display: none;`}
 `;
 
@@ -75,32 +76,25 @@ const Dot = styled.div`
   }
 `;
 
-class Hamburger extends Component {
-  state = {
-    clicked: false,
+const Hamburger = () => {
+  const [clicked, setClick] = useState(false);
+
+  const handleButtonClick = () => {
+    clicked ? setClick(false) : setClick(true);
   };
 
-  handleButtonClick = () => {
-    const { clicked } = this.state;
-    return clicked === false ? this.setState({ clicked: true }) : this.setState({ clicked: false });
-  };
-
-  render() {
-    const { clicked } = this.state;
-
-    return (
-      <>
-        <NavWrapper>
-          <HamburgerWrapper onClick={() => this.handleButtonClick()}>
-            <Dot className={clicked ? 'changed' : 'Dot'} />
-            <Dot className={clicked ? 'changed' : 'Dot'} />
-            <Dot className={clicked ? 'changed' : 'Dot'} />
-          </HamburgerWrapper>
-          <Dropdown isVisible={clicked} />
-        </NavWrapper>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <NavWrapper>
+        <HamburgerWrapper className="hamburger" onClick={handleButtonClick}>
+          <Dot className={clicked ? "changed" : "Dot"} />
+          <Dot className={clicked ? "changed" : "Dot"} />
+          <Dot className={clicked ? "changed" : "Dot"} />
+        </HamburgerWrapper>
+        <Dropdown isVisible={clicked} />
+      </NavWrapper>
+    </>
+  );
+};
 
 export default Hamburger;

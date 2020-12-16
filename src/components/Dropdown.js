@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Button from './MainButton';
+import React from "react";
+import styled from "styled-components";
+import Button from "./MainButton";
 
 const DropdownWrapper = styled.div`
   width: 60vw;
@@ -16,18 +16,34 @@ const DropdownWrapper = styled.div`
   right: 0;
   top: 6vh;
   z-index: 100;
-  transform: translate(${({ isVisible }) => (isVisible ? '0, -3' : '0, -56vh')});
+  transform: translate(
+    ${({ isVisible }) => (isVisible ? "0, -3" : "0, -56vh")}
+  );
   transition: transform 0.75s ease-in-out;
 `;
 
 const Dropdown = ({ isVisible }) => {
+  const hamburger = document.querySelector(".hamburger");
+
+  const handleClick = () => {
+    hamburger.click();
+  };
+
   return (
     <>
-      <DropdownWrapper isVisible={isVisible}>
-        <Button whereToGo="/about">about me</Button>
-        <Button whereToGo="/projects">projects</Button>
-        <Button whereToGo="/stack">stack</Button>
-        <Button whereToGo="/contact">contact</Button>
+      <DropdownWrapper className="drop" isVisible={isVisible} bu="alex">
+        <Button handleOnClick={handleClick} whereToGo="/about">
+          about me
+        </Button>
+        <Button handleOnClick={handleClick} whereToGo="/projects">
+          projects
+        </Button>
+        <Button handleOnClick={handleClick} whereToGo="/stack">
+          stack
+        </Button>
+        <Button handleOnClick={handleClick} whereToGo="/contact">
+          contact
+        </Button>
       </DropdownWrapper>
     </>
   );

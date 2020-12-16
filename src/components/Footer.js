@@ -1,14 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const FooterWrapper = styled.footer`
-  margin-top: 5rem;
   width: 100%;
   height: 5vh;
   background-color: ${({ theme }) => theme.blueDots};
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 `;
 
 const FootersText = styled.p`

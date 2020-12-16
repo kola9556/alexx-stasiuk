@@ -1,10 +1,9 @@
-import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
-import { media } from '../utils';
-import IconWrapper from './IconWrapper.js';
-import food from '../assets/images/food.jpg';
-import horse from '../assets/images/horse.jpg';
-import travel from '../assets/images/travel.jpg';
+import React, { useState, useRef } from "react";
+import styled from "styled-components";
+import { media } from "../utils";
+import food from "../assets/images/food.jpg";
+import horse from "../assets/images/horse.jpg";
+import travel from "../assets/images/travel.jpg";
 
 const IconsWrapper = styled.div`
   position: relative;
@@ -18,6 +17,26 @@ const IconsWrapper = styled.div`
   ${media.tablet` width: 40vw;
     bottom: 0;
     margin-bottom: 3rem;`}
+`;
+
+const IconWrapper = styled.div`
+  width: 20%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 90%;
+    height: 90%;
+    transition: transform 1s;
+    transition-timing-function: ease-in-out;
+  }
+  :hover {
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 const Photo = styled.img`
@@ -34,55 +53,63 @@ const Photo = styled.img`
 `;
 
 const Hobbies = () => {
-  const [isEnter, setEnter] = useState({ horse: false, travel: false, food: false });
-  const [isClick, setClick] = useState({ horse: false, travel: false, food: false });
+  const [isEnter, setEnter] = useState({
+    horse: false,
+    travel: false,
+    food: false,
+  });
+  const [isClick, setClick] = useState({
+    horse: false,
+    travel: false,
+    food: false,
+  });
   const photo = useRef(null);
-  const foodIcon = document.querySelector('.foodIcon');
-  const horseIcon = document.querySelector('.horseIcon');
-  const travelIcon = document.querySelector('.travelIcon');
-  const clickIcon = document.querySelector('.click');
+  const foodIcon = document.querySelector(".foodIcon");
+  const horseIcon = document.querySelector(".horseIcon");
+  const travelIcon = document.querySelector(".travelIcon");
+  const clickIcon = document.querySelector(".click");
 
   const handleHorseClick = () => {
-    clickIcon.style.display = 'none';
+    clickIcon.style.display = "none";
     if (!isClick.horse) {
-      travelIcon.style.transform = 'rotate(0deg)';
-      foodIcon.style.transform = 'rotate(0deg)';
-      horseIcon.style.transform = 'rotate(25deg)';
-      photo.current.style.display = 'inline';
+      travelIcon.style.transform = "rotate(0deg)";
+      foodIcon.style.transform = "rotate(0deg)";
+      horseIcon.style.transform = "rotate(25deg)";
+      photo.current.style.display = "inline";
       setClick({ horse: true, travel: false, food: false });
     } else {
-      horseIcon.style.transform = 'rotate(0deg)';
-      photo.current.style.display = 'none';
+      horseIcon.style.transform = "rotate(0deg)";
+      photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
 
   const handleTravelClick = () => {
-    clickIcon.style.display = 'none';
+    clickIcon.style.display = "none";
     if (!isClick.travel) {
-      horseIcon.style.transform = 'rotate(0deg)';
-      foodIcon.style.transform = 'rotate(0deg)';
-      travelIcon.style.transform = 'rotate(-450deg)';
-      photo.current.style.display = 'inline';
+      horseIcon.style.transform = "rotate(0deg)";
+      foodIcon.style.transform = "rotate(0deg)";
+      travelIcon.style.transform = "rotate(-450deg)";
+      photo.current.style.display = "inline";
       setClick({ horse: false, travel: true, food: false });
     } else {
-      travelIcon.style.transform = 'rotate(0deg)';
-      photo.current.style.display = 'none';
+      travelIcon.style.transform = "rotate(0deg)";
+      photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
 
   const handleFoodClick = () => {
-    clickIcon.style.display = 'none';
+    clickIcon.style.display = "none";
     if (!isClick.food) {
-      travelIcon.style.transform = 'rotate(0deg)';
-      horseIcon.style.transform = 'rotate(0deg)';
-      foodIcon.style.transform = 'rotate(-450deg)';
-      photo.current.style.display = 'inline';
+      travelIcon.style.transform = "rotate(0deg)";
+      horseIcon.style.transform = "rotate(0deg)";
+      foodIcon.style.transform = "rotate(-450deg)";
+      photo.current.style.display = "inline";
       setClick({ horse: false, travel: false, food: true });
     } else {
-      foodIcon.style.transform = 'rotate(0deg)';
-      photo.current.style.display = 'none';
+      foodIcon.style.transform = "rotate(0deg)";
+      photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
@@ -91,8 +118,12 @@ const Hobbies = () => {
       <IconsWrapper>
         <IconWrapper
           className="horseWrapper"
-          onMouseEnter={() => setEnter({ horse: true, travel: false, food: false })}
-          onMouseLeave={() => setEnter({ horse: false, travel: false, food: false })}
+          onMouseEnter={() =>
+            setEnter({ horse: true, travel: false, food: false })
+          }
+          onMouseLeave={() =>
+            setEnter({ horse: false, travel: false, food: false })
+          }
           onClick={handleHorseClick}
         >
           {
@@ -133,8 +164,12 @@ const Hobbies = () => {
           }
         </IconWrapper>
         <IconWrapper
-          onMouseEnter={() => setEnter({ horse: false, travel: true, food: false })}
-          onMouseLeave={() => setEnter({ horse: false, travel: false, food: false })}
+          onMouseEnter={() =>
+            setEnter({ horse: false, travel: true, food: false })
+          }
+          onMouseLeave={() =>
+            setEnter({ horse: false, travel: false, food: false })
+          }
           onClick={handleTravelClick}
         >
           {
@@ -207,8 +242,12 @@ const Hobbies = () => {
           }
         </IconWrapper>
         <IconWrapper
-          onMouseEnter={() => setEnter({ horse: false, travel: false, food: true })}
-          onMouseLeave={() => setEnter({ horse: false, travel: false, food: false })}
+          onMouseEnter={() =>
+            setEnter({ horse: false, travel: false, food: true })
+          }
+          onMouseLeave={() =>
+            setEnter({ horse: false, travel: false, food: false })
+          }
           onClick={handleFoodClick}
         >
           {
@@ -493,7 +532,15 @@ const Hobbies = () => {
       </IconsWrapper>
       <Photo
         ref={photo}
-        src={isClick.horse ? horse : isClick.food ? food : isClick.travel ? travel : null}
+        src={
+          isClick.horse
+            ? horse
+            : isClick.food
+            ? food
+            : isClick.travel
+            ? travel
+            : null
+        }
       />
     </>
   );

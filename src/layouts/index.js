@@ -1,7 +1,11 @@
-import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import { theme } from '../assets/styles/theme';
-import GlobalStyle from '../assets/styles/globalStyle';
+import React from "react";
+import styled, { ThemeProvider, css } from "styled-components";
+import { theme } from "../assets/styles/theme";
+import { media } from "../utils";
+import GlobalStyle from "../assets/styles/globalStyle";
+import Navigation from "../components/Navigation";
+import Hamburger from "../components/Hamburger";
+import Logo from "../components/Logo";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,13 +15,39 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-const MainLayout = ({ children, pageContext }) => (
-  <>
-    <GlobalStyle />
-    <ThemeProvider theme={theme}>
-      <Wrapper>{children}</Wrapper>
-    </ThemeProvider>
-  </>
-);
+const LogoWrapper = styled.div`
+  margin: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  ${({ desktop }) =>
+    desktop &&
+    css`
+      ${media.tablet` display: none;`}
+    `}
+`;
+
+const MainLayout = ({ children }) => {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          {document.location.pathname !== "/" ? (
+            <LogoWrapper desktop>
+              <Logo whereToGo="/" />
+            </LogoWrapper>
+          ) : null}
+
+          <Hamburger />
+          {document.location.pathname !== "/" ? <Navigation /> : null}
+          {children}
+        </Wrapper>
+      </ThemeProvider>
+    </>
+  );
+};
 
 export default MainLayout;

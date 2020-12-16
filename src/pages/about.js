@@ -9,7 +9,6 @@ import Hobbies from "../components/Hobbies";
 import Footer from "../components/Footer";
 import ClickArrow from "../components/ClickArrow";
 import click from "../assets/images/click.svg";
-import Navigation from "../components/Navigation";
 
 const StyledParagraph = styled(Paragraph)`
   margin: 8rem 4rem;
@@ -54,8 +53,12 @@ const textContent = { heading: <>Hi, I'm Aleksandra Stasiuk!</> };
 
 const AboutPage = ({ data }) => {
   // images
-  const about = data.allFile.edges.filter((e) => e.node.name === "about");
-  const alex = data.allFile.edges.filter((e) => e.node.name === "alex");
+  const aboutImageTop = data.allFile.edges.filter(
+    (e) => e.node.name === "about"
+  );
+  const portraitImage = data.allFile.edges.filter(
+    (e) => e.node.name === "alex"
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,8 +75,8 @@ const AboutPage = ({ data }) => {
   return (
     <>
       <TopSection
-        transferFluid={about[0].node.childImageSharp.fluid}
-        portraitFluid={alex[0].node.childImageSharp.fluid}
+        transferFluid={aboutImageTop[0].node.childImageSharp.fluid}
+        portraitFluid={portraitImage[0].node.childImageSharp.fluid}
         text={textContent.heading}
       />
       <StyledParagraph>

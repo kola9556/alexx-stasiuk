@@ -55,10 +55,10 @@ const Button = styled(Link)`
   ${media.tablet` font-size: 3rem;`}
 `;
 
-const MainButton = ({ children, whereToGo, down }) => {
+const MainButton = ({ children, whereToGo, down, handleOnClick }) => {
   return (
     <>
-      <ButtonFrame>
+      <ButtonFrame onClick={handleOnClick}>
         <Button down={down} to={whereToGo}>
           {children}
         </Button>

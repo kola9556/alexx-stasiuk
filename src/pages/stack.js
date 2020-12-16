@@ -3,10 +3,9 @@ import styled, { css } from "styled-components";
 import { graphql } from "gatsby";
 import { media } from "../utils";
 import { SecHeading } from "../components/StyledTexts";
-import TopSection from "../components/TopSection";
-import react from "../assets/icons/react.svg";
 import Tool from "../components/Tool";
 import Footer from "../components/Footer";
+import TopSection from "../components/TopSection";
 
 const textContent = {
   heading: "Stack",

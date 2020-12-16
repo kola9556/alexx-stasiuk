@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import NavLink from './NavLink';
-import { media } from '../utils';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { media } from "../utils";
 
 const NavigationbarWrapper = styled.div`
   display: none;
@@ -16,6 +16,23 @@ const NavigationbarWrapper = styled.div`
     transform: rotate(-90deg);
     right: calc(-32rem + 40%);
     bottom: 0rem;`}
+`;
+
+const NavLink = styled(Link)`
+  font-size: 2.8rem;
+  text-decoration: none;
+  color: ${(theme) => theme.navyPurple};
+  letter-spacing: 0.3rem;
+
+  ${media.tablet`font-size: 2.4rem;`}
+
+  :visited {
+    color: ${(theme) => theme.navyPurple};
+  }
+
+  &.active {
+    font-weight: 800;
+  }
 `;
 
 const NavigationHome = () => {

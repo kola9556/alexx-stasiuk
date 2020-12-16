@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { media } from '../utils';
-import styled from 'styled-components';
-import NavLink from './NavLink';
-import Logo from './Logo';
+import React, { useEffect, useState, useRef } from "react";
+import { Link } from "gatsby";
+import { media } from "../utils";
+import styled from "styled-components";
+import Logo from "./Logo";
 
 const NavigationWrapper = styled.div`
   display: none;
@@ -31,25 +31,44 @@ const LinksWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const NavLink = styled(Link)`
+  font-size: 2.8rem;
+  text-decoration: none;
+  color: ${(theme) => theme.navyPurple};
+  letter-spacing: 0.3rem;
+
+  ${media.tablet`font-size: 2.4rem;`}
+
+  :visited {
+    color: ${(theme) => theme.navyPurple};
+  }
+
+  &.active {
+    font-weight: 800;
+  }
+`;
+
 const Navigation = () => {
-  const [navigationBackground, setNavigationBackground] = useState('transparent');
+  const [navigationBackground, setNavigationBackground] = useState(
+    "transparent"
+  );
   const navigationRef = useRef(null);
 
   useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
+    window.addEventListener("scroll", updateScroll);
 
-    navigationRef.current.style.height = '70px';
+    navigationRef.current.style.height = "70px";
     navigationRef.current.style.background = navigationBackground;
 
     return () => {
-      window.removeEventListener('scroll', updateScroll);
+      window.removeEventListener("scroll", updateScroll);
     };
   });
 
   const updateScroll = () => {
     window.scrollY > window.innerHeight
-      ? setNavigationBackground('rgba(255,255,255,0.8)')
-      : setNavigationBackground('transparent');
+      ? setNavigationBackground("rgba(255,255,255,0.8)")
+      : setNavigationBackground("transparent");
   };
 
   return (

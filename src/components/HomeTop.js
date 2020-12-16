@@ -1,12 +1,10 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { media } from '../utils';
-import Hamburger from './Hamburger';
-import Logo from './Logo';
-import { Heading, UpperSecondHeading } from './StyledTexts';
-import NavigationHome from './NavigationHome';
-import LeftWrapper from './LeftWrapper';
-import RightWrapper from './RightWrapper';
+import React from "react";
+import styled, { css } from "styled-components";
+import { media } from "../utils";
+import Logo from "./Logo";
+import { Heading, UpperSecondHeading } from "./StyledTexts";
+import NavigationHome from "./NavigationHome";
+import FixedBackgroundLeft from "./FixedBackgrundLeft";
 
 const MainWrapper = styled.div`
   width: 100%;
@@ -27,6 +25,18 @@ const LogoWrapper = styled.div`
     `}
 `;
 
+const RightWrapper = styled.div`
+  display: none;
+
+  ${media.tablet`background: ${({ theme }) => theme.pinkBackground};
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;`}
+`;
+
 const textContent = {
   phone: (
     <>
@@ -35,23 +45,24 @@ const textContent = {
     </>
   ),
   desktop: "Hi, I'm Alex!",
-  secondHeading: 'Frontend developer',
+  secondHeading: "Frontend developer",
 };
 
 const HomeTop = ({ transferFluid }) => {
   return (
     <>
       <MainWrapper>
-        <LeftWrapper fluidTransfer={transferFluid}>
-          <Hamburger />
+        <FixedBackgroundLeft fluidTransfer={transferFluid}>
           <LogoWrapper desktop>
             <Logo whereToGo="/" />
           </LogoWrapper>
           <Heading index>
-            {window.screen.width < 700 ? textContent.phone : textContent.desktop}
+            {window.screen.width < 700
+              ? textContent.phone
+              : textContent.desktop}
           </Heading>
           <UpperSecondHeading>{textContent.secondHeading}</UpperSecondHeading>
-        </LeftWrapper>
+        </FixedBackgroundLeft>
         <RightWrapper home>
           <NavigationHome />
           <LogoWrapper>
