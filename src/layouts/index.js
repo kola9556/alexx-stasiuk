@@ -35,14 +35,14 @@ const MainLayout = ({ children }) => {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Wrapper>
-          {document.location.pathname !== "/" ? (
+          {children.props.path !== "/" ? (
             <LogoWrapper desktop>
               <Logo whereToGo="/" />
             </LogoWrapper>
           ) : null}
 
           <Hamburger />
-          {document.location.pathname !== "/" ? <Navigation /> : null}
+          {children.props.path !== "/" ? <Navigation /> : null}
           {children}
         </Wrapper>
       </ThemeProvider>
