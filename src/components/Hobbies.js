@@ -68,6 +68,7 @@ const Hobbies = () => {
   const horseIcon = document.querySelector(".horseIcon");
   const travelIcon = document.querySelector(".travelIcon");
   const clickIcon = document.querySelector(".click");
+  console.log(horseIcon);
 
   const handleHorseClick = () => {
     clickIcon.style.display = "none";
