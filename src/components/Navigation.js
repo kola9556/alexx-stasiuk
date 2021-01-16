@@ -34,17 +34,20 @@ const LinksWrapper = styled.div`
 const NavLink = styled(Link)`
   font-size: 2.8rem;
   text-decoration: none;
-  color: ${(theme) => theme.navyPurple};
+  color: ${({ theme }) => theme.navyPurple};
   letter-spacing: 0.3rem;
 
   ${media.tablet`font-size: 2.4rem;`}
 
   :visited {
-    color: ${(theme) => theme.navyPurple};
+    color: ${({ theme }) => theme.navyPurple};
   }
 
   &.active {
     font-weight: 800;
+  }
+  :active {
+    color: ${({ theme }) => theme.blueDots};
   }
 `;
 
