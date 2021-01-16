@@ -22,26 +22,20 @@ const DropdownWrapper = styled.div`
   transition: transform 0.75s ease-in-out;
 `;
 
-const Dropdown = ({ isVisible }) => {
-  const hamburger = document.querySelector(".hamburger");
-
-  const handleClick = () => {
-    hamburger.click();
-  };
-
+const Dropdown = ({ isVisible, handleCloseDropdown }) => {
   return (
     <>
-      <DropdownWrapper className="drop" isVisible={isVisible} bu="alex">
-        <Button handleOnClick={handleClick} whereToGo="/about">
+      <DropdownWrapper isVisible={isVisible}>
+        <Button handleOnClick={handleCloseDropdown} whereToGo="/about">
           about me
         </Button>
-        <Button handleOnClick={handleClick} whereToGo="/projects">
+        <Button handleOnClick={handleCloseDropdown} whereToGo="/projects">
           projects
         </Button>
-        <Button handleOnClick={handleClick} whereToGo="/stack">
+        <Button handleOnClick={handleCloseDropdown} whereToGo="/stack">
           stack
         </Button>
-        <Button handleOnClick={handleClick} whereToGo="/contact">
+        <Button handleOnClick={handleCloseDropdown} whereToGo="/contact">
           contact
         </Button>
       </DropdownWrapper>

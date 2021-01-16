@@ -1,9 +1,12 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const ClickArrow = styled.img`
+const ClickArrowWrapper = styled.img`
   width: 12rem;
   height: 10.5rem;
   position: absolute;
+  top: ${({ top }) => top};
+  left: ${({ left }) => left};
   animation-name: move;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
@@ -21,5 +24,9 @@ const ClickArrow = styled.img`
     }
   }
 `;
+
+const ClickArrow = ({ top, left, refToPass, src }) => {
+  return <ClickArrowWrapper ref={refToPass} top={top} left={left} src={src} />;
+};
 
 export default ClickArrow;

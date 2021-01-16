@@ -1,4 +1,5 @@
 import React from "react";
+import Media from "react-media";
 import styled, { css } from "styled-components";
 import { media } from "../utils";
 import { SecHeading, Paragraph } from "./StyledTexts";
@@ -86,6 +87,9 @@ const ButtonsWrapper = styled.div`
   justify-content: space-around;
 `;
 
+const MarginedParagraph = styled(Paragraph)`
+  margin-left: 1rem;
+`;
 const CenteredParagraph = styled(Paragraph)`
   text-align: center;
 `;
@@ -143,34 +147,41 @@ const Project = ({
           </defs>
         </svg>
         <InfoWrapper>
-          {window.innerWidth > 700 ? (
-            <>
-              <StackIconsWrapper>
-                {iconsArray.map((icon) =>
-                  icon.iconData.filename === "datocms.svg" ? (
-                    <Icon key={icon.id} src={icon.iconData.url} dato />
-                  ) : (
-                    <Icon key={icon.id} src={icon.iconData.url} />
-                  )
-                )}
-              </StackIconsWrapper>
-              <Paragraph>{description}</Paragraph>
-            </>
-          ) : (
-            <>
-              <CenteredParagraph>{description}</CenteredParagraph>
-              <StackIconsWrapper>
-                {iconsArray.map((icon) =>
-                  icon.iconData.filename === "datocms.svg" ? (
-                    <Icon key={icon.id} src={icon.iconData.url} dato />
-                  ) : (
-                    <Icon key={icon.id} src={icon.iconData.url} />
-                  )
-                )}
-              </StackIconsWrapper>
-            </>
-          )}
-
+          <Media
+            queries={{
+              desktop: "(min-width: 700px)",
+            }}
+          >
+            {(matches) =>
+              matches.desktop ? (
+                <>
+                  <StackIconsWrapper>
+                    {iconsArray.map((icon) =>
+                      icon.iconData.filename === "datocms.svg" ? (
+                        <Icon key={icon.id} src={icon.iconData.url} dato />
+                      ) : (
+                        <Icon key={icon.id} src={icon.iconData.url} />
+                      )
+                    )}
+                  </StackIconsWrapper>
+                  <MarginedParagraph>{description}</MarginedParagraph>
+                </>
+              ) : (
+                <>
+                  <CenteredParagraph>{description}</CenteredParagraph>
+                  <StackIconsWrapper>
+                    {iconsArray.map((icon) =>
+                      icon.iconData.filename === "datocms.svg" ? (
+                        <Icon key={icon.id} src={icon.iconData.url} dato />
+                      ) : (
+                        <Icon key={icon.id} src={icon.iconData.url} />
+                      )
+                    )}
+                  </StackIconsWrapper>
+                </>
+              )
+            }
+          </Media>
           <ButtonsWrapper>
             <StackButton href={githubLink} target="_blank">
               github

@@ -55,6 +55,12 @@ const Navigation = () => {
   const navigationRef = useRef(null);
 
   useEffect(() => {
+    const updateScroll = () => {
+      window.scrollY > window.innerHeight
+        ? setNavigationBackground("rgba(255,255,255,0.8)")
+        : setNavigationBackground("transparent");
+    };
+
     window.addEventListener("scroll", updateScroll);
 
     navigationRef.current.style.height = "70px";
@@ -64,12 +70,6 @@ const Navigation = () => {
       window.removeEventListener("scroll", updateScroll);
     };
   });
-
-  const updateScroll = () => {
-    window.scrollY > window.innerHeight
-      ? setNavigationBackground("rgba(255,255,255,0.8)")
-      : setNavigationBackground("transparent");
-  };
 
   return (
     <NavigationWrapper ref={navigationRef}>

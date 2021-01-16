@@ -52,7 +52,7 @@ const Photo = styled.img`
     margin-top: 0;`}
 `;
 
-const Hobbies = () => {
+const Hobbies = ({ refToPass, arrowRef }) => {
   const [isEnter, setEnter] = useState({
     horse: false,
     travel: false,
@@ -64,59 +64,59 @@ const Hobbies = () => {
     food: false,
   });
   const photo = useRef(null);
-  const foodIcon = document.querySelector(".foodIcon");
-  const horseIcon = document.querySelector(".horseIcon");
-  const travelIcon = document.querySelector(".travelIcon");
-  const clickIcon = document.querySelector(".click");
-  console.log(horseIcon);
+  const foodIcon = useRef(null);
+  const horseIcon = useRef(null);
+  const travelIcon = useRef(null);
+
+  const arrow = arrowRef;
 
   const handleHorseClick = () => {
-    clickIcon.style.display = "none";
+    arrow.current.style.display = "none";
     if (!isClick.horse) {
-      travelIcon.style.transform = "rotate(0deg)";
-      foodIcon.style.transform = "rotate(0deg)";
-      horseIcon.style.transform = "rotate(25deg)";
+      travelIcon.current.style.transform = "rotate(0deg)";
+      foodIcon.current.style.transform = "rotate(0deg)";
+      horseIcon.current.style.transform = "rotate(25deg)";
       photo.current.style.display = "inline";
       setClick({ horse: true, travel: false, food: false });
     } else {
-      horseIcon.style.transform = "rotate(0deg)";
+      horseIcon.current.style.transform = "rotate(0deg)";
       photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
 
   const handleTravelClick = () => {
-    clickIcon.style.display = "none";
+    arrow.current.style.display = "none";
     if (!isClick.travel) {
-      horseIcon.style.transform = "rotate(0deg)";
-      foodIcon.style.transform = "rotate(0deg)";
-      travelIcon.style.transform = "rotate(-450deg)";
+      horseIcon.current.style.transform = "rotate(0deg)";
+      foodIcon.current.style.transform = "rotate(0deg)";
+      travelIcon.current.style.transform = "rotate(-450deg)";
       photo.current.style.display = "inline";
       setClick({ horse: false, travel: true, food: false });
     } else {
-      travelIcon.style.transform = "rotate(0deg)";
+      travelIcon.current.style.transform = "rotate(0deg)";
       photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
 
   const handleFoodClick = () => {
-    clickIcon.style.display = "none";
+    arrow.current.style.display = "none";
     if (!isClick.food) {
-      travelIcon.style.transform = "rotate(0deg)";
-      horseIcon.style.transform = "rotate(0deg)";
-      foodIcon.style.transform = "rotate(-450deg)";
+      travelIcon.current.style.transform = "rotate(0deg)";
+      horseIcon.current.style.transform = "rotate(0deg)";
+      foodIcon.current.style.transform = "rotate(-450deg)";
       photo.current.style.display = "inline";
       setClick({ horse: false, travel: false, food: true });
     } else {
-      foodIcon.style.transform = "rotate(0deg)";
+      foodIcon.current.style.transform = "rotate(0deg)";
       photo.current.style.display = "none";
       setClick({ horse: false, travel: false, food: false });
     }
   };
   return (
     <>
-      <IconsWrapper>
+      <IconsWrapper ref={refToPass}>
         <IconWrapper
           className="horseWrapper"
           onMouseEnter={() =>
@@ -132,6 +132,7 @@ const Hobbies = () => {
             isEnter.horse ? (
               <svg
                 className="horseIcon"
+                ref={horseIcon}
                 width="158"
                 height="163"
                 viewBox="0 0 158 163"
@@ -150,6 +151,7 @@ const Hobbies = () => {
             ) : (
               <svg
                 className="horseIcon"
+                ref={horseIcon}
                 width="158"
                 height="163"
                 viewBox="0 0 158 163"
@@ -178,6 +180,7 @@ const Hobbies = () => {
             isEnter.travel ? (
               <svg
                 className="travelIcon"
+                ref={travelIcon}
                 width="186"
                 height="180"
                 viewBox="0 0 186 180"
@@ -216,6 +219,7 @@ const Hobbies = () => {
             ) : (
               <svg
                 className="travelIcon"
+                ref={travelIcon}
                 width="186"
                 height="180"
                 viewBox="0 0 186 180"
@@ -255,7 +259,7 @@ const Hobbies = () => {
             //food
             isEnter.food ? (
               <svg
-                className="foodIcon"
+                ref={foodIcon}
                 width="187"
                 height="187"
                 viewBox="0 0 187 187"
@@ -409,6 +413,7 @@ const Hobbies = () => {
             ) : (
               <svg
                 className="foodIcon"
+                ref={foodIcon}
                 width="187"
                 height="187"
                 viewBox="0 0 187 187"

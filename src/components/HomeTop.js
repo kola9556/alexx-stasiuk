@@ -1,4 +1,5 @@
 import React from "react";
+import Media from "react-media";
 import styled, { css } from "styled-components";
 import { media } from "../utils";
 import Logo from "./Logo";
@@ -56,11 +57,20 @@ const HomeTop = ({ transferFluid }) => {
           <LogoWrapper desktop>
             <Logo whereToGo="/" />
           </LogoWrapper>
-          <Heading index>
-            {window.screen.width < 700
-              ? textContent.phone
-              : textContent.desktop}
-          </Heading>
+
+          <Media
+            queries={{
+              phone: "(max-width: 700px)",
+              desktop: "(min-width: 700px)",
+            }}
+          >
+            {(matches) => (
+              <Heading index>
+                {matches.phone && textContent.phone}
+                {matches.desktop && textContent.desktop}
+              </Heading>
+            )}
+          </Media>
           <UpperSecondHeading>{textContent.secondHeading}</UpperSecondHeading>
         </FixedBackgroundLeft>
         <RightWrapper home>

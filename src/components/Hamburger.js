@@ -91,7 +91,7 @@ const Hamburger = () => {
           <Dot className={clicked ? "changed" : "Dot"} />
           <Dot className={clicked ? "changed" : "Dot"} />
         </HamburgerWrapper>
-        <Dropdown isVisible={clicked} />
+        <Dropdown isVisible={clicked} handleCloseDropdown={handleButtonClick} />
       </NavWrapper>
     </>
   );

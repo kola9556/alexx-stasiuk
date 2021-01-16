@@ -17,8 +17,8 @@
     "gatsby-plugin-offline": "^3.2.37",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-react-helmet": "^3.3.14",
-    "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-plugin-sharp": "^2.6.43",
+    "gatsby-plugin-styled-components": "^3.3.14",
     "gatsby-source-datocms": "^2.5.7",
     "gatsby-source-filesystem": "^2.3.35",
     "gatsby-transformer-sharp": "^2.5.19",
@@ -26,6 +26,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-media": "^1.10.0",
     "react-toastify": "^6.2.0",
     "slugify": "^1.4.6",
     "styled-components": "^5.2.0"

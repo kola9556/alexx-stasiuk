@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { media } from "../utils";
 import { graphql } from "gatsby";
@@ -59,18 +59,15 @@ const AboutPage = ({ data }) => {
   const portraitImage = data.allFile.edges.filter(
     (e) => e.node.name === "alex"
   );
+  const [top, setTop] = useState("20px");
+  const [left, setLeft] = useState();
+  const arrow = useRef(null);
+  const hobbies = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const horseIcon = document.querySelector(".horseWrapper");
-    const horseIconHeight = horseIcon.getBoundingClientRect().height;
-    const horseIconLeft = horseIcon.getBoundingClientRect().width;
-    const click = document.querySelector(".click");
-    click.style.top =
-      horseIcon.getBoundingClientRect().top - horseIconHeight - 15 + "px";
-    click.style.left =
-      horseIcon.getBoundingClientRect().left - horseIconLeft - 10 + "px";
-  });
+    setTop(`${hobbies.current.offsetTop - hobbies.current.offsetHeight}px`);
+    setLeft(`${hobbies.current.offsetLeft - arrow.current.offsetWidth}px`);
+  }, []);
 
   return (
     <>
@@ -105,8 +102,14 @@ const AboutPage = ({ data }) => {
         <MainButton whereToGo="/stack">stack</MainButton>
       </ButtonsWrapper>
       <SecHeading underline>My hobbies</SecHeading>
-      <ClickArrow className="click" src={click} />
-      <Hobbies />
+      <ClickArrow
+        refToPass={arrow}
+        className="click"
+        src={click}
+        top={top}
+        left={left}
+      />
+      <Hobbies refToPass={hobbies} arrowRef={arrow} />
       <ContactMessage>
         If you find me interesting, let's make a{" "}
         <MainButton whereToGo="/contact" down="true">
